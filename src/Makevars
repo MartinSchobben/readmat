@@ -1,13 +1,6 @@
-PKG_CPPFLAGS= -I/usr/local/MATLAB/R2021b/extern/include \
-							-I./
+PKG_CPPFLAGS= -I/usr/local/MATLAB/R2021b/extern/include
 
-PKG_CXXFLAGS = -DTARGET_API_VERSION=800
-
-PKG_LIBS = -L/usr/local/MATLAB/R2021b/bin \
-					 -L/usr/local/MATLAB/R2021b/bin/glnxa64/libmat.so \
-					 -L/usr/local/MATLAB/R2021b/bin/glnxa64/libmx.so \
-					 -L/usr/local/MATLAB/R2021b/bin/glnxa64/libmex.so \
-					 -L/usr/local/MATLAB/R2021b/extern/lib \
-					 -lm -O0
+PKG_LIBS= -L/usr/local/MATLAB/R2021b/bin/glnxa64 -lmat -lmx -lmex \
+					-Wl,-rpath,/usr/local/MATLAB/R2021b/bin/glnxa64
 
 

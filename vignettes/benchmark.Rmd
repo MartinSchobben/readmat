@@ -1,0 +1,33 @@
+---
+title: "benchmark"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{benchmark}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(readmat)
+```
+
+```{r bench}
+bench::mark(
+  r = {
+    R.matlab::readMat(get_matlab("num-large-cube.mat"))$big
+  },
+  cpp = {
+    read_mat(get_matlab("num-large-cube.mat"))
+  },
+  check = TRUE,
+  relative = TRUE
+)
+
+```

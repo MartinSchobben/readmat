@@ -5,17 +5,25 @@
 #include "cpp11/declarations.hpp"
 #include <R_ext/Visibility.h>
 
-// code.cpp
-cpp11::doubles read_mat();
-extern "C" SEXP _readmat_read_mat() {
+// matrix.cpp
+doubles cpp_matrix();
+extern "C" SEXP _readmat_cpp_matrix() {
   BEGIN_CPP11
-    return cpp11::as_sexp(read_mat());
+    return cpp11::as_sexp(cpp_matrix());
+  END_CPP11
+}
+// read-matlab.cpp
+cpp11::doubles read_mat(const char* file);
+extern "C" SEXP _readmat_read_mat(SEXP file) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(read_mat(cpp11::as_cpp<cpp11::decay_t<const char*>>(file)));
   END_CPP11
 }
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
-    {"_readmat_read_mat", (DL_FUNC) &_readmat_read_mat, 0},
+    {"_readmat_cpp_matrix", (DL_FUNC) &_readmat_cpp_matrix, 0},
+    {"_readmat_read_mat",   (DL_FUNC) &_readmat_read_mat,   1},
     {NULL, NULL, 0}
 };
 }
