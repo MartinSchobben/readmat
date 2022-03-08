@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# readmat
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Readmat requires  a full license and installation of Matlab^{(R)} if you don't have this then the `R.matlab` package is much more suitable. The only goal of this package is to provide a potentially faster approach, especially when dealing with large matrices.
+
+This package is definitely under development!
+
+## Benchmark
+
+```{r bench}
+library(R.matlab)
+library(readmat)
+```
+
+
+## Installation
+
+You can install the development version of readmat from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("MartinSchobben/readmat")
+```
+
+
