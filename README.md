@@ -15,23 +15,24 @@ This package is definitely under development!
 
 ## Benchmark
 
-``` r
-library(R.matlab)
-#> R.matlab v3.6.2 (2018-09-26) successfully loaded. See ?R.matlab for help.
-#> 
-#> Attaching package: 'R.matlab'
-#> The following objects are masked from 'package:base':
-#> 
-#>     getOption, isOpen
-library(readmat)
-```
-
-## Installation
-
-You can install the development version of readmat from
-[GitHub](https://github.com/) with:
+A data cub of 400, 400, 400.
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("MartinSchobben/readmat")
+# powered by bench::mark()
+knitr::kable(readmat:::bm)
 ```
+
+|      min |  median |  itr/sec | mem_alloc | gc/sec | n_itr | n_gc | total_time |
+|---------:|--------:|---------:|----------:|-------:|------:|-----:|-----------:|
+| 3.071944 | 3.23496 | 1.000000 |   3.98151 |    NaN |    10 |    0 |  26.659742 |
+| 1.000000 | 1.00000 | 3.215313 |   1.00000 |    Inf |     5 |    5 |   4.145746 |
+
+
+
+    ## Installation
+
+    You can install the development version of readmat from [GitHub](https://github.com/) with:
+
+    ``` r
+    # install.packages("devtools")
+    devtools::install_github("MartinSchobben/readmat")

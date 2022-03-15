@@ -24,9 +24,12 @@ This package is definitely under development!
 
 ## Benchmark
 
+A data cub of `r dim(readmat::read_mat(readmat::get_matlab("num-large-cube.mat")))`.
+
 ```{r bench}
-library(R.matlab)
-library(readmat)
+# powered by bench::mark()
+knitr::kable(readmat:::bm)
+```
 ```
 
 

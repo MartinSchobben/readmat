@@ -11,7 +11,7 @@ get_matlab(path = NULL)
 }
 \description{
 This function is modified from the package \code{readr} to access
-the bundled datasets in directory \code{inst/extdata} of \code{pointapply}. This
+the bundled datasets in directory \code{inst/extdata} of \code{readmat}. This
 function make them easy to access. This function is modified from
 \code{\link[readr:readr_example]{readr_example}} of the package
 \code{\link[readr]{readr}}.

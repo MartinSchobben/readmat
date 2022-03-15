@@ -5,9 +5,11 @@ bm <- bench::mark(
   cpp = {
     readmat::read_mat(readmat::get_matlab("num-large-cube.mat"))
   },
-  max_iterations = 10,
-  check = TRUE,
+  min_iterations = 10,
+  max_iterations = 25,
   relative = TRUE
-) |> tidyr::drop_na()
+)
+# removed list column
+bm <- dplyr::select(bm, -tidyselect::vars_select_helpers$where(is.list))
 
-saveRDS(bm)
+usethis::use_data(bm, overwrite = TRUE, internal = TRUE)
