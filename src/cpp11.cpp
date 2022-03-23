@@ -6,16 +6,16 @@
 #include <R_ext/Visibility.h>
 
 // read-matlab.cpp
-cpp11::doubles read_mat(const char* file);
-extern "C" SEXP _readmat_read_mat(SEXP file) {
+cpp11::doubles read_mat_(const char* file);
+extern "C" SEXP _readmat_read_mat_(SEXP file) {
   BEGIN_CPP11
-    return cpp11::as_sexp(read_mat(cpp11::as_cpp<cpp11::decay_t<const char*>>(file)));
+    return cpp11::as_sexp(read_mat_(cpp11::as_cpp<cpp11::decay_t<const char*>>(file)));
   END_CPP11
 }
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
-    {"_readmat_read_mat", (DL_FUNC) &_readmat_read_mat, 1},
+    {"_readmat_read_mat_", (DL_FUNC) &_readmat_read_mat_, 1},
     {NULL, NULL, 0}
 };
 }

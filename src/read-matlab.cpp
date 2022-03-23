@@ -4,7 +4,7 @@
 #include <vector>
 
 [[cpp11::register]]
-cpp11::doubles read_mat(const char* file) {
+cpp11::doubles read_mat_(const char* file) {
 
   // inspired by https://stackoverflow.com/questions/26234673/matlab-api-reading-mat-file-from-c-using-stl-container
   // open mat-file
