@@ -4,7 +4,7 @@
 #include <vector>
 
 [[cpp11::register]]
-cpp11::doubles read_mat_(const char* file) {
+cpp11::doubles read_mat_int(const char* file) {
 
   // inspired by https://stackoverflow.com/questions/26234673/matlab-api-reading-mat-file-from-c-using-stl-container
   // open mat-file
@@ -39,13 +39,16 @@ cpp11::doubles read_mat_(const char* file) {
       if (pr != NULL) {
 
         // get the object
-        std::vector<double> v;
-        v.reserve(num);
-        v.assign(pr, pr+num);
+        std::vector<unsigned int> intVec;
+        intVec.reserve(num);
+        intVec.assign(pr, pr+num);
+
+        // type cast to double
+        std::vector<double> doubleVec;
+        std::transform(intVec.begin(), intVec.end(), doubleVec.begin(), [](unsigned int x) { return (double)x;});
+        cpp11::writable::doubles u =  doubleVec;
 
         // Set the number of rows and columns to attribute dim of the vector object.
-        cpp11::writable::doubles u = v;
-
         if (M > 1 & L == 0) {
           u.attr("dim") = {M, N}; // matrix
         } else if (M > 1 & L != 0) {
