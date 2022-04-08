@@ -3,3 +3,8 @@
 .RData
 .Ruserdata
 inst/doc
+src/Makevars.in
+src/Makevars
+autom4te.cache
+config.log
+config.status
