@@ -4,10 +4,6 @@ get_mat_names_ <- function(file) {
   invisible(.Call(`_readmat_get_mat_names_`, file))
 }
 
-read_mat_dbl <- function(file) {
-  .Call(`_readmat_read_mat_dbl`, file)
-}
-
-read_mat_int <- function(file) {
-  .Call(`_readmat_read_mat_int`, file)
+read_mat_ <- function(file) {
+  .Call(`_readmat_read_mat_`, file)
 }

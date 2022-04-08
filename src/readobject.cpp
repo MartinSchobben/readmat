@@ -1,31 +1,16 @@
-#include <cpp11.hpp>
-#include <iostream>
-#include "mat.h"
-#include <vector>
+#include "readobject.hpp"
 
-[[cpp11::register]]
-cpp11::doubles read_mat_dbl(const char* file) {
-
-  // inspired by https://stackoverflow.com/questions/26234673/matlab-api-reading-mat-file-from-c-using-stl-container
-  // open mat-file
-  MATFile *pmat = matOpen(file, "r");
-  if (pmat == NULL) return 0;
-
-  // how many objects in file (https://github.com/hokiedsp/libmatpy/blob/master/test/test_libmat.cpp)
-  int numvars{0};
-  char **varlist = matGetDir(pmat, &numvars);
-
-  std::cout << "There are " << numvars << " objects in this MAT file. \n";
-
-  for(int i{0}; i < numvars; ++i) {
+cpp11::doubles read_object(MATFile *pmat, char *object) {
 
     // extract the specified variable
-    mxArray *arr = matGetVariable(pmat, varlist[i]);
+    mxArray *arr = matGetVariable(pmat, object);
 
     if (arr != NULL && mxIsDouble(arr) && !mxIsEmpty(arr)) {
 
       // pointer to he first element of the real data (NULL is no data)
       double *pr = mxGetPr(arr);
+      const char *type;
+      type = mxGetClassName(arr); // data type
       mwSize num = mxGetNumberOfElements(arr); // max number of elements
       mwSize ndims = mxGetNumberOfDimensions(arr); // number of dimensions
       const mwSize *dims = mxGetDimensions(arr);
@@ -34,14 +19,19 @@ cpp11::doubles read_mat_dbl(const char* file) {
       int N = dims[1];
       int L = dims[2];
 
-      std::cout << "Object has " << ndims << " dimensions. These are the dimensions of the object " << M << "," << N << "," << L << ".\n";
+      // print some info about the object
+      std::cout << "Object has " << ndims << " dimensions of";
+      std::cout << " size: " << M ;
+      if (N != 0) std::cout << ", " << N ;
+      if (L != 0) std::cout << ", " << L ;
+      std::cout << " and with type: " << type << std::endl;
 
       if (pr != NULL) {
 
         // get the object
         std::vector<double> v;
         v.reserve(num);
-        v.assign(pr, pr+num);
+        v.assign(pr, pr + num);
 
         // Set the number of rows and columns to attribute dim of the vector object.
         cpp11::writable::doubles u = v;
@@ -53,16 +43,15 @@ cpp11::doubles read_mat_dbl(const char* file) {
         }
 
         return u;
+
+      } else {
+        cpp11::stop("This is not a valid pointer to an array element.") ;
       }
+    } else {
+      cpp11::stop("The array is either empty or not of type double.") ;
     }
 
-  // cleanup
+    // cleanup
     mxDestroyArray(arr);
-    mxFree(varlist);
-  }
-  // close file
-  matClose(pmat);
+
 }
-
-
-

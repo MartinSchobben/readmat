@@ -1,11 +1,10 @@
 #' @export
-read_mat <- function(file, type = "double") {
+read_mat <- function(file) {
+  # file name
   nm <- fs::path_file(file) |> fs::path_ext_remove()
-  if (type == "double") {
-    rm <- read_mat_dbl(file)
-  } else if (type == "integer") {
-    rm <- read_mat_int(file)
-  }
+  # file
+  rm <- read_mat_(file)
+  # add file name as attribute
   attr(rm, "file") <- nm
   rm
 }

@@ -1,0 +1,4 @@
+//
+// bool istype
+//
+// <T>readtype
