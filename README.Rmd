@@ -18,20 +18,25 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-Readmat requires  a full license and installation of Matlab^{(R)} if you don't have this then the `R.matlab` package is much more suitable. The only goal of this package is to provide a potentially faster approach, especially when dealing with large matrices.
+Readmat requires  a full license and installation of Matlab^(R)^ if you don't have this then the `R.matlab` package is much more suitable. The only goal of this package is to provide a potentially faster approach, especially when dealing with large matrices.
 
 This package is definitely under development!
 
 ## Benchmark
 
-A data cub of `r dim(readmat::read_mat(readmat::get_matlab("num-large-cube.mat")))`.
+A data cube of 400 x 400 x 400 values.
 
-```{r bench}
+```{r examplee} 
+readmat::read_mat(readmat::get_matlab("double-large-cube.mat"))[[1]] |> 
+  dim()
+```
+
+Comparing `R.matlab` and `readmat`.
+
+```{r bench, echo=FALSE}
 # powered by bench::mark()
-knitr::kable(readmat:::bm)
+knitr::kable(readmat:::bm, digits=2)
 ```
-```
-
 
 ## Installation
 
@@ -41,5 +46,4 @@ You can install the development version of readmat from [GitHub](https://github.
 # install.packages("devtools")
 devtools::install_github("MartinSchobben/readmat")
 ```
-
 

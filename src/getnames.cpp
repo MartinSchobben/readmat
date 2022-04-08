@@ -4,7 +4,7 @@
 #include <vector>
 
 [[cpp11::register]]
-void get_mat_names_(const char* file) {
+void get_names_(const char* file) {
 
   // inspired by extern/examples/eng_mat/matdgns.c file of matlab
 
@@ -16,7 +16,7 @@ void get_mat_names_(const char* file) {
   int numvars{0};
   char **varlist = matGetDir(pmat, &numvars);
 
-  std::cout << "There are " << numvars << " objects in this MAT file. \n";
+  Rprintf("There are %.1i objects in this MAT file. \n", numvars);
 
   /*
    * get directory of MAT-file
@@ -31,7 +31,7 @@ void get_mat_names_(const char* file) {
 
   for (int i{0}; i < ndir; i++) {
 
-    std::cout << "The name of the object is " << dir[i] << "\n";
+    Rprintf("The name of the object is %s . \n", dir[i]);
   }
 
 

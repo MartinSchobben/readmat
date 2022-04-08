@@ -8,6 +8,9 @@
 #'
 #' @param path Name of file. If `NULL`, the example files will be listed.
 #' @export
+#'
+#' @examples
+#' get_matlab()
 get_matlab <- function(path = NULL) {
   if (is.null(path)) {
     dir(system.file("extdata", package = "readmat"))

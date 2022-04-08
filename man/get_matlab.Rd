@@ -16,3 +16,6 @@ function make them easy to access. This function is modified from
 \code{\link[readr:readr_example]{readr_example}} of the package
 \code{\link[readr]{readr}}.
 }
+\examples{
+get_matlab()
+}
