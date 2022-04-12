@@ -13,30 +13,35 @@ AC_LANG(C++)
 AC_PROG_CPP
 
 # Search for a system library mat.
-# Search for mat headers.
+# Search for mat header file.
 have_libmat=no
-LIBMAT_CPPFLAGS=""
-LIBMAT_LIBS="-lmat"
+MAT_CPPFLAGS=""
+MAT_LIBS="-lmat"
 
+# Finding libraries using pkg-config
 PKG_PROG_PKG_CONFIG
 
 if test [ -n "$PKG_CONFIG" ] ; then
   AC_MSG_CHECKING([pkg-config for libmat])
   if $PKG_CONFIG --exists libmat; then
     have_libmat=yes
-    LIBMAT_CPPFLAGS=`"${PKG_CONFIG}" --cflags mat.h`
-    LIBMAT_LIBS=`"${PKG_CONFIG}" --libs mat`
+    MAT_CPPFLAGS=`"${PKG_CONFIG}" --cflags mat`
+    MAT_LIBS=`"${PKG_CONFIG}" --libs mat`
   fi
   AC_MSG_RESULT([${have_libmat}])
 fi
 
+# Fallback after using pkg-config
 if test "x${have_libmat}" = xno; then
-  AC_CHECK_HEADERS(mat.h, MATLAB/R2021b/extern/include, [have_libmat=yes], [AC_ERROR([A full installation of Matlab is required.])])
+  AC_CHECK_HEADERS([MATLAB/R2021b/extern/include/mat.h])
+  if test "${ac_cv_header_mat_h}" = no ; then
+     AC_MSG_ERROR("mat.h not found")
+  fi
 fi
 
 # Write the flags into the src/Makevars file.
-AC_SUBST([PKG_CPPFLAGS], ["${PKG_CPPFLAGS}"])
-AC_SUBST([PKG_LIBS], ["${LIBS} ${PKG_LIBS} ${LIBMAT_LIBS}"])
+AC_SUBST([PKG_CPPFLAGS], ["${PKG_CPPFLAGS} ${MAT_CPPFLAGS} ${ac_cv_header_mat_h}"])
+AC_SUBST([PKG_LIBS], ["${LIBS} ${PKG_LIBS} ${MAT_LIBS}"])
 AC_CONFIG_FILES([src/Makevars])
 AC_OUTPUT
 
@@ -44,6 +49,7 @@ echo "
   --------------------------------------------------
   Configuration for ${PACKAGE_NAME} ${PACKAGE_VERSION}
 
+    cppflags: ${PKG_CPPFLAGS}
     libs:     ${PKG_LIBS}
 
   --------------------------------------------------
