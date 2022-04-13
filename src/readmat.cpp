@@ -187,9 +187,7 @@ cpp11::list read_mat_(const char* file) {
   // close file
   matClose(pmat);
 #else
-  cpp11::stop(
-    "A full installation of Matlab is required."
-  )
+  cpp11::stop("A full installation of Matlab is required.");
 #endif
 }
 

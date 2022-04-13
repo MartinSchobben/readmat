@@ -37,8 +37,6 @@ void get_names_(const char* file) {
   mxFree(dir);
 
 #else
-  cpp11::stop(
-    "A full installation of Matlab is required."
-  )
+  cpp11::stop("A full installation of Matlab is required.");
 #endif
 }
