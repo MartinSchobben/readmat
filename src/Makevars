@@ -1,6 +1,0 @@
-PKG_CPPFLAGS= -I/usr/local/MATLAB/R2021b/extern/include
-
-PKG_LIBS= -L/usr/local/MATLAB/R2021b/bin/glnxa64 -lmat \
-					-Wl,-rpath,/usr/local/MATLAB/R2021b/bin/glnxa64
-
-
