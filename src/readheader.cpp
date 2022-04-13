@@ -1,5 +1,6 @@
 #include "readmat.hpp"
 
+#if HAVE_MAT_H
 void create_header(mxArray *arr) {
 
     const char *type  = mxGetClassName(arr); // data type
@@ -15,5 +16,5 @@ void create_header(mxArray *arr) {
     Rprintf(", with type: %s. \n", type);
 
 }
-
+#endif
 
