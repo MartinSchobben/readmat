@@ -1,10 +1,9 @@
-#include <cpp11.hpp>
-#include <iostream>
-#include "mat.h"
-#include <vector>
+#include "readmat.hpp"
 
 [[cpp11::register]]
 void get_names_(const char* file) {
+
+#if HAVE_MAT_H
 
   // inspired by extern/examples/eng_mat/matdgns.c file of matlab
 
@@ -34,9 +33,12 @@ void get_names_(const char* file) {
     Rprintf("The name of the object is %s . \n", dir[i]);
   }
 
-
-  //
   // clean-up
   mxFree(dir);
 
+#else
+  cpp11::stop(
+    "A full installation of Matlab is required."
+  )
+#endif
 }

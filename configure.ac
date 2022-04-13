@@ -60,16 +60,18 @@ if test "x${have_mat}" = xno; then
   ------------------------------------------------------------------------])
 fi
 
-# Write the flags into the src/Makevars file.
-AC_SUBST([PKG_CPPFLAGS], ["${CPPFLAGS}"])
-AC_SUBST([PKG_LIBS], ["-L${MAT_LIBS} ${ac_cv_search_matOpen} ${RPATH}"])
+if test "x${have_mat}" = xyes; then
+  # Write the flags into the src/Makevars file.
+  AC_SUBST([PKG_CPPFLAGS], ["${CPPFLAGS}"])
+  AC_SUBST([PKG_LIBS], ["-L${MAT_LIBS} ${ac_cv_search_matOpen} ${RPATH}"])
+fi
+
 AC_CONFIG_FILES([src/Makevars])
 AC_OUTPUT
-
 # print something nice
 echo "
   -----------------------------------------------------------
-  Configuration for ${PACKAGE_NAME} ${PACKAGE_VERSION}
+    Configuration for ${PACKAGE_NAME} ${PACKAGE_VERSION}
 
     cppflags: ${PKG_CPPFLAGS}
     libs:     ${PKG_LIBS}

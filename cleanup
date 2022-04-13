@@ -3,6 +3,7 @@
 rm -f aclocal.*
 rm -f config.*
 rm -f src/Makevars
+rm -f src/config.hpp
 rm -rf autom4te.cache
 
 

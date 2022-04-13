@@ -3882,10 +3882,13 @@ $as_echo "$as_me: WARNING:
   ------------------------------------------------------------------------" >&2;}
 fi
 
-# Write the flags into the src/Makevars file.
-PKG_CPPFLAGS="${CPPFLAGS}"
+if test "x${have_mat}" = xyes; then
+  # Write the flags into the src/Makevars file.
+  PKG_CPPFLAGS="${CPPFLAGS}"
 
-PKG_LIBS="-L${MAT_LIBS} ${ac_cv_search_matOpen} ${RPATH}"
+  PKG_LIBS="-L${MAT_LIBS} ${ac_cv_search_matOpen} ${RPATH}"
+
+fi
 
 ac_config_files="$ac_config_files src/Makevars"
 
@@ -5165,11 +5168,10 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
 
-
 # print something nice
 echo "
   -----------------------------------------------------------
-  Configuration for ${PACKAGE_NAME} ${PACKAGE_VERSION}
+    Configuration for ${PACKAGE_NAME} ${PACKAGE_VERSION}
 
     cppflags: ${PKG_CPPFLAGS}
     libs:     ${PKG_LIBS}
