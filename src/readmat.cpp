@@ -4,6 +4,7 @@
 [[cpp11::register]]
 cpp11::list read_mat_(const char* file) {
 
+#if HAVE_MAT_H
   // inspired by https://stackoverflow.com/questions/26234673/matlab-api-reading-mat-file-from-c-using-stl-container
   // open mat-file
   MATFile *pmat = matOpen(file, "r");
@@ -185,7 +186,11 @@ cpp11::list read_mat_(const char* file) {
   mxFree(varlist);
   // close file
   matClose(pmat);
-
+#else
+  cpp11::stop(
+    "A full installation of Matlab is required."
+  )
+#endif
 }
 
 

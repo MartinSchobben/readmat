@@ -15,10 +15,14 @@ R_CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
 AC_LANG(C++)
 AC_PROG_CPP
 
+# sources files
+AC_CONFIG_SRCDIR([src/cpp11.cpp])
+AC_CONFIG_HEADERS([src/config.hpp])
+
 # check for matlab installation
 AC_CHECK_PROG([matlab],[matlab],[yes],[no])
 AM_CONDITIONAL([FOUND_MATLAB], [test "x$matlab" = xyes])
-AM_COND_IF([FOUND_MATLAB],,[AC_MSG_ERROR([A full Matlab installation is required.])])
+AM_COND_IF([FOUND_MATLAB],,[AC_MSG_WARN([A full Matlab installation is required.])])
 
 # matlab root
 MAT_ROOT=$(matlab -batch 'disp(matlabroot)')
@@ -43,7 +47,7 @@ if test "x${have_mat}" = xyes; then
 fi
 
 if test "x${have_mat}" = xno; then
-  AC_MSG_ERROR([
+  AC_MSG_WARN([
   ------------------------------------------------------------------------
   A full installation of Matlab is required.
 

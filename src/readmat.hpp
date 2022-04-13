@@ -1,9 +1,11 @@
 #ifndef READMAT_HPP
 #define READMAT_HPP
 
+#include "config.hpp"
 #include <cpp11.hpp>
 #include <iostream>
 #include <vector>
+#if HAVE_MAT_H
 #include "mat.h" // matlab
 
 // function templates
@@ -45,4 +47,5 @@ void create_dimensions(mxArray *arr, T &u) {
 
 // forward declarations
 void create_header(mxArray *arr);
+#endif
 #endif
