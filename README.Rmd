@@ -1,5 +1,6 @@
 ---
 output: github_document
+bibliography: "man/packages.bib"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,9 +17,13 @@ knitr::opts_chunk$set(
 # readmat
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/MartinSchobben/readmat/workflows/R-CMD-check/badge.svg)](https://github.com/MartinSchobben/readmat/actions)
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://choosealicense.com/licenses/mit/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
 <!-- badges: end -->
 
-Readmat requires  a full license and installation of Matlab^(R)^ if you don't have this then the `R.matlab` package is much more suitable. The only goal of this package is to provide a potentially faster approach, especially when dealing with large matrices.
+Readmat requires  a full license and installation of Matlab^(R)^ if you don't have this then the `R.matlab` [@R.matlab] package is much more suitable. The only goal of this package is to provide a potentially faster approach, especially when dealing with large matrices.
 
 This package is definitely under development!
 
@@ -47,3 +52,24 @@ You can install the development version of readmat from [GitHub](https://github.
 devtools::install_github("MartinSchobben/readmat")
 ```
 
+## Credits
+
+```{r pkgs, echo=FALSE, message=FALSE, eval=FALSE}
+# following code for loading and writing the bibtex references for the used pkgs
+pkgs <- c("R.matlab", "cpp11", "devtools")  
+# Get the R reference
+rref <- citation()
+# Create ref key
+rref$key <- "rversion"
+# write bib
+knitr::write_bib(pkgs, "man/packages.bib", prefix = "")
+pkgs <- bibtex::read.bib("man/packages.bib")
+bibtex::write.bib(
+  purrr::reduce(list(rref, pkgs), append), 
+  file = "man/packages.bib"
+)
+```
+
+The construction of the R [@rversion] package `readmat` and associated documentation was aided by the packages; `devtools` [@devtools] and `cpp11` [@cpp11].
+
+# References

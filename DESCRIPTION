@@ -15,7 +15,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 LinkingTo: 
     cpp11
-SystemRequirements: C++11
+SystemRequirements: C++11 matlab
 Suggests: 
     rmarkdown,
     knitr,
