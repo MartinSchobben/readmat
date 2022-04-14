@@ -22,9 +22,8 @@ Read a Matlab file
 \examples{
 # Use \code{get_matlab()} to access the examples bundled with this package
 
-
 # Read Matlab file with one object
-read_mat(get_matlab("double-vec.mat"))
+\dontrun{read_mat(get_matlab("double-vec.mat"))}
 
 # Read Matlab file with multiple objects
 \dontrun{read_mat(get_matlab("multi-object.mat"))}
