@@ -1,4 +1,9 @@
 test_that("readmat can convert different types and structures", {
+
+  # not matlab installed
+  skip_on_cran()
+  skip_on_ci()
+
   expect_snapshot(
     read_mat(get_matlab("uint16-vec.mat"))
   )
@@ -31,5 +36,13 @@ test_that("readmat can convert different types and structures", {
   )
   expect_snapshot(
     read_mat(get_matlab("multi-object.mat"))
+  )
+})
+
+test_that("error with no matlab installation", {
+
+  expect_error(
+    read_mat(get_matlab("uint16-vec.mat")),
+    "A full installation of Matlab is required."
   )
 })
