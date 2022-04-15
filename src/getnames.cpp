@@ -15,8 +15,6 @@ cpp11::strings get_names_(const char* file) {
   int numvars{0};
   char **varlist = matGetDir(pmat, &numvars);
 
-  Rprintf("There are %.1i objects in this MAT file. \n", numvars);
-
   /*
    * get directory of MAT-file
    */
@@ -32,7 +30,7 @@ cpp11::strings get_names_(const char* file) {
 
   for (int i{0}; i < ndir; i++) {
 
-    Rprintf("The name of the object is %s.\n", dir[i]);
+    Rprintf("Name of object is %s.\n", dir[i]);
     std::string u{};
     u = static_cast<std::string>(dir[i]);
     out[i] = u;

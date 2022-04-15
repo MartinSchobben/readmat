@@ -6,10 +6,12 @@
 
 \code{read_mat()} can read Matlab files}
 \usage{
-read_mat(file)
+read_mat(file, names = FALSE)
 }
 \arguments{
 \item{file}{A path to a file. Files ending with \code{.mat}.}
+
+\item{names}{Include names of matlab objects (default = FALSE).}
 }
 \value{
 A vector or array with up to 3 dimensions.
