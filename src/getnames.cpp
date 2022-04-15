@@ -1,7 +1,7 @@
 #include "readmat.hpp"
 
 [[cpp11::register]]
-void get_names_(const char* file) {
+cpp11::strings get_names_(const char* file) {
 
 #if HAVE_MAT_H
 
@@ -27,11 +27,19 @@ void get_names_(const char* file) {
   int	ndir{};
   dir = (const char **)matGetDir(pmat, &ndir);
 
+  // list for storage
+  cpp11::writable::strings out(numvars);
 
   for (int i{0}; i < ndir; i++) {
 
-    Rprintf("The name of the object is %s . \n", dir[i]);
+    Rprintf("The name of the object is %s.\n", dir[i]);
+    std::string u{};
+    u = static_cast<std::string>(dir[i]);
+    out[i] = u;
+
   }
+
+  return out;
 
   // clean-up
   mxFree(dir);

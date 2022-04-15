@@ -19,10 +19,16 @@
 #'
 read_mat <- function(file) {
   # file name
-  nm <- fs::path_file(file) |> fs::path_ext_remove()
+  fl <- fs::path_file(file) |>
+    fs::path_ext_remove()
   # file
   rm <- read_mat_(file)
+  # set names of list
+  nm <- get_names_(file)
+  rm <- stats::setNames(rm ,nm)
   # add file name as attribute
-  attr(rm, "file") <- nm
+  attr(rm, "file") <- fl
   rm
 }
+
+loaded <- function(...) {}

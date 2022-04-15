@@ -5,7 +5,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 2 dimensions of size: 1, 4, with type: uint16. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is foo.
+      $foo
       [1] 0 0 0 0
       
       attr(,"file")
@@ -18,7 +20,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 2 dimensions of size: 2, 4, with type: uint16. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is bar.
+      $bar
            [,1] [,2] [,3] [,4]
       [1,]    0    0    0    0
       [2,]    0    0    0    0
@@ -33,7 +37,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 3 dimensions of size: 2, 4, 2, with type: uint16. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is baz.
+      $baz
       , , 1
       
            [,1] [,2] [,3] [,4]
@@ -57,7 +63,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 2 dimensions of size: 1, 4, with type: int16. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is foo.
+      $foo
       [1] 0 0 0 0
       
       attr(,"file")
@@ -70,7 +78,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 2 dimensions of size: 2, 4, with type: int16. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is bar.
+      $bar
            [,1] [,2] [,3] [,4]
       [1,]    0    0    0    0
       [2,]    0    0    0    0
@@ -85,7 +95,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 3 dimensions of size: 2, 4, 2, with type: int16. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is baz.
+      $baz
       , , 1
       
            [,1] [,2] [,3] [,4]
@@ -109,7 +121,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 2 dimensions of size: 1, 4, with type: double. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is foo.
+      $foo
       [1] 1 2 3 4
       
       attr(,"file")
@@ -122,7 +136,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 2 dimensions of size: 2, 4, with type: double. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is bar.
+      $bar
            [,1] [,2] [,3] [,4]
       [1,]    1    2    3    4
       [2,]    1    2    3    4
@@ -137,7 +153,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 3 dimensions of size: 2, 4, 2, with type: double. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is baz.
+      $baz
       , , 1
       
            [,1] [,2] [,3] [,4]
@@ -161,7 +179,9 @@
     Output
       1 object(s) found in this MAT file. 
       Object has 3 dimensions of size: 400, 400, 400, with type: double. 
-      [[1]]
+      There are 1 objects in this MAT file. 
+      The name of the object is big.
+      $big
       , , 1
       
              [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
@@ -9929,18 +9949,22 @@
       Object has 2 dimensions of size: 2, 4, with type: double. 
       Object has 2 dimensions of size: 3, 4, with type: double. 
       Object has 2 dimensions of size: 1, 4, with type: double. 
-      [[1]]
+      There are 3 objects in this MAT file. 
+      The name of the object is bar.
+      The name of the object is baz.
+      The name of the object is foo.
+      $bar
            [,1] [,2] [,3] [,4]
       [1,]    1    2    3    4
       [2,]    1    2    3    4
       
-      [[2]]
+      $baz
            [,1] [,2] [,3] [,4]
       [1,]    1    2    3    4
       [2,]    1    2    3    4
       [3,]    1    2    3    4
       
-      [[3]]
+      $foo
       [1] 1 2 3 4
       
       attr(,"file")

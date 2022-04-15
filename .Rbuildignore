@@ -6,3 +6,4 @@
 ^LICENSE\.md$
 #^src/Makevars\.in$
 ^\.github$
+^man/packages\.bib$

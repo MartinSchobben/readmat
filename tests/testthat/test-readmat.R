@@ -41,6 +41,12 @@ test_that("readmat can convert different types and structures", {
 
 test_that("error with no matlab installation", {
 
+  # not in development mode
+  skip_if_not(
+    exists("loaded", "package:readmat"),
+    "Skip test if not in development mode."
+  )
+
   expect_error(
     read_mat(get_matlab("uint16-vec.mat")),
     "A full installation of Matlab is required."

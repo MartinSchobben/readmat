@@ -6,11 +6,10 @@
 #include <R_ext/Visibility.h>
 
 // getnames.cpp
-void get_names_(const char* file);
+cpp11::strings get_names_(const char* file);
 extern "C" SEXP _readmat_get_names_(SEXP file) {
   BEGIN_CPP11
-    get_names_(cpp11::as_cpp<cpp11::decay_t<const char*>>(file));
-    return R_NilValue;
+    return cpp11::as_sexp(get_names_(cpp11::as_cpp<cpp11::decay_t<const char*>>(file)));
   END_CPP11
 }
 // readmat.cpp
