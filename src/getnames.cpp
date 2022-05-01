@@ -23,7 +23,7 @@ cpp11::strings get_names_(const char* file) {
   mxClassID  category{};
 
   int	ndir{};
-  dir = (const char **)matGetDir(pmat, &ndir);
+  dir = (const char **)matGetDir(pmat, &ndir); // C style cast. you should convert this to a static_cast
 
   // list for storage
   cpp11::writable::strings out(numvars);

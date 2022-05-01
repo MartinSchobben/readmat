@@ -1,5 +1,5 @@
 Package: readmat
-Title: Readmat allows fast reading of Matlab files
+Title: Fast reading of Matlab Files
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Martin", 
